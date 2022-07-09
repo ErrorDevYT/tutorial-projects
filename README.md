@@ -1,5 +1,4 @@
 # tutorial-projects
-All The Files For Tutorials!
 
 YOU CAN USE MY CODE FOR FREE IF YOU DIDN'T UNDERSTAND THE VIDEO!
 
