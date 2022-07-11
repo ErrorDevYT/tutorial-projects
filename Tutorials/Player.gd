@@ -1,22 +1,20 @@
 extends KinematicBody2D
 
-export(int) var walk_speed = 200
-export(int) var gravity = 600
-export(int) var jump_force = 500
-
 var velocity = Vector2()
 
+var speed = 250
+
 func _physics_process(delta):
-	velocity.y += gravity * delta
+	velocity = Vector2()
 	
-	if Input.is_action_pressed("ui_left"):
-		velocity.x = -walk_speed
-	if Input.is_action_pressed("ui_right"):
-		velocity.x = walk_speed
-	else:
-		velocity.x = lerp(velocity.x, 0, 0.1)
+	if Input.is_action_pressed("up"):
+		velocity.y -= 1
+	if Input.is_action_pressed("down"):
+		velocity.y += 1
+	if Input.is_action_pressed("left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("right"):
+		velocity.x += 1
 	
-	if Input.is_action_just_pressed("ui_up"):
-		velocity.y = -jump_force
-	
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = velocity.normalized()
+	velocity = move_and_slide(velocity * speed)
